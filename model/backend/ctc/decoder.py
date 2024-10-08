@@ -223,7 +223,7 @@ class PhonemeCTCdecoder(nn.Module,EvalModule):
         self.g2p=g2p
         self.p2g=p2g
         
-        self.mask_inf=self.p2w*1.
+        self.mask_inf=self.p2g*1.
         self.mask_inf[self.mask_inf==0]= -torch.finfo(torch.float16).min**2
         self.mask_inf[self.mask_inf==1]= 0
 
@@ -236,10 +236,10 @@ class PhonemeCTCdecoder(nn.Module,EvalModule):
         self.cState=State(x,xl)
         self.bState=State(x[:,:,[self.blank]].repeat(1,1,x.size(-1)),xl)
         
-        self.w2p=self.w2p.to(eState.device)
-        self.p2w=self.p2w.to(eState.device)
+        self.g2p=self.g2p.to(eState.device)
+        self.p2g=self.p2g.to(eState.device)
         self.mask_inf=self.mask_inf.to(eState.device)
-        self.ctc_arange=torch.arange(self.p2w.size(0),device=eState.device)
+        self.ctc_arange=torch.arange(self.p2g.size(0),device=eState.device)
 
         return self.cState
     
@@ -397,7 +397,7 @@ class PhonemeCTCdecoder(nn.Module,EvalModule):
 
         # (batch_beam_size, phoneme_vocab_size, vocab_size)
 
-        self.matP=(curP-self.prefP)[:,:,None].repeat(1,1,self.p2w.size(-1)) * self.p2w[None,:,:] 
+        self.matP=(curP-self.prefP)[:,:,None].repeat(1,1,self.p2g.size(-1)) * self.p2g[None,:,:] 
         
 #         self.matP[:,[0,1,2,3],:]=-torch.inf
 

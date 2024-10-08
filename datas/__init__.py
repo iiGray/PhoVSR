@@ -139,15 +139,16 @@ class CMLRDataset(Dataset):
         ):
         super().__init__(mode,convert_gray,augment=augment)
 
-        self.video_pth=cmlr+"croped_videos/"
-
+        self.video_pth=cmlr+"videos/"
+        self.text_pth=cmlr+"texts/"
         with open(cmlr+mode+".csv","r") as f:
             files=f.readlines()
         self.files=[k.strip().replace("/","#") for k in files]
 
 
-        config_pth=os.path.join(fadir(fadir(__file__)),"configs","CMLR_model.json")
-        char_list=json.load(open(config_pth,"rb"))[2]["char_list"]
+        config_pth=os.path.join(fadir(fadir(__file__)),"configs","cmlr_config.json")
+        config=json.load(open(config_pth,"rb"))
+        char_list=config["char_list"]
         self.vocab=Vocab(char_list)
 
     def __len__(self):

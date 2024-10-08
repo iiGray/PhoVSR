@@ -1,0 +1,7 @@
+**/*cache*
+**/*checkpoint*
+**/*.zip
+**/*.pth
+**/*.pkl
+# **/*.mp4
+**/tempCodeRunnerFile.py
