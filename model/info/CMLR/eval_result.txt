@@ -1,6 +1,0 @@
-Evaluate: [ CMLR ]
-On  4 samples.  Takes:  8 s
-
-cer : 0.125000000000
-
-
