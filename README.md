@@ -44,7 +44,7 @@ conda create
 
 |     Components        |  Hours| CER  |                               url                                         |  size (MB)  |
 |:----------------------|:-----:|:-----:|-----------------------------------------------------------------------------------:|:-----------:|
-|   **VSR Model**       | 61h |    7.9 |   [BaiduDrive](https://pan.baidu.com/s/1OuS95wiL8Acx5ILpNjpf9Q?pwd=n48m)     |     207    |
-|   **Language Model**  |     |         |  [BaiduDrive](https://pan.baidu.com/s/1xffAUIQHBKQsAUEyjODSLQ?pwd=cip2)   |     201    |
+|   **VSR Model**       | 61h |    7.9 |   [BaiduDrive](https://pan.baidu.com/s/14IoqyjXF1mFGA5jAiw6ygQ?pwd=exd5)     |     207    |
+|   **Language Model**  |     |         |  [BaiduDrive](https://pan.baidu.com/s/12Ed2Who3CXDAWKJBwfM6Mg?pwd=39vj)   |     201    |
 
 </details>
