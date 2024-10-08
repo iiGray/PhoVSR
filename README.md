@@ -47,6 +47,11 @@ Print result
 python test.py mode=show
 ```
 
+If memory is not enough, run like
+```
+batch_size=2 beam_size=3
+```
+
 
 ## PhoVSR models
 
