@@ -25,10 +25,9 @@ Download the wheels and install through
 
 Version:
 
-###torch : torch-1.13.0+cu117-cp39###
+**torch : torch-1.13.0+cu117-cp39**
 
-###torchvision: torchvision-0.14.1+cu117-cp39###
-
+**torchvision: torchvision-0.14.1+cu117-cp39**
 
 
 4. Install hydra, einops, pypinyin
