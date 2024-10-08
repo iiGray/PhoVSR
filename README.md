@@ -83,7 +83,7 @@ Put models in the corresponding folders under the folder "model/info"
 
 |     Components        |  Hours| CER  |                               url                                         |  size (MB)  |
 |:----------------------|:-----:|:-----:|-----------------------------------------------------------------------------------:|:-----------:|
-|   **VSR Model**       | 61h |    7.9 |   [BaiduDrive](https://pan.baidu.com/s/14IoqyjXF1mFGA5jAiw6ygQ?pwd=exd5)     |     207    |
-|   **Language Model**  |     |         |  [BaiduDrive](https://pan.baidu.com/s/12Ed2Who3CXDAWKJBwfM6Mg?pwd=39vj)   |     201    |
+|   **VSR Model**       | 61h |    7.9 |   [BaiduDrive](https://pan.baidu.com/s/14IoqyjXF1mFGA5jAiw6ygQ?pwd=exd5) [GoogleDrive](https://drive.google.com/file/d/1g6Oyjl6SjkVwLDYv4BVT2ShQZ_rlsyyu/view?usp=drive_link)     |     207    |
+|   **Language Model**  |     |         |  [BaiduDrive](https://pan.baidu.com/s/12Ed2Who3CXDAWKJBwfM6Mg?pwd=39vj) [GoogleDrive](https://drive.google.com/file/d/1VxJlTzb54KZVsY6g7Ra3xLEMvIRs0nFc/view?usp=sharing)  |     201    |
 
 </details>
