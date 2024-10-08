@@ -90,6 +90,9 @@ class MaskedLabelSmoothingLoss(nn.Module):
 
     
 class CTCLoss(nn.Module):
+    '''
+    Python implementation of CTCLoss
+    '''
     def __init__(self,blank=0,reduction:Literal["none","sum","mean"]="mean"):
         super().__init__()
         self.blank=blank

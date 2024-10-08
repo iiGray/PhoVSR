@@ -51,9 +51,9 @@ class Timer:
             if interval==0:break
         
         return " : ".join([f"{scales[i]:.0f} {units[i]}" for i in reversed(valid)])
+
     def __repr__(self):
         return f"{self.__class__.__name__}(born={self.s}, pause={self.begin})"
-            
 
 class Solution:
     def __init__(self,
@@ -122,8 +122,7 @@ class Accumulator:
         return self.data[k]
     
     def __repr__(self):
-        return f"{self.__class__.__name__}({dict(self.data)})"
-    
+        return f"{self.__class__.__name__}({to_str(dict(self.data))})"
     
 def use_svg_display():backend_inline.set_matplotlib_formats('svg')
     
@@ -260,7 +259,3 @@ def try_gpu(i=0):
     if torch.cuda.device_count()>=i+1:
         return torch.device(f'cuda:{i}')
     return torch.device('cpu')
-
-
-if __name__=="__main__":
-    pass

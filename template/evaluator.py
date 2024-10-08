@@ -24,21 +24,23 @@ class Evaluator:
                  update_interval=300):
 
         self.model=model
-        self.model.to(device)
-        self.model.eval()
         self.model_name=model_name
 
         self.load_best=load_best
-        self.load_model(model,model_name=model_name,load_best=load_best)
+        self.load_model(model,model_name=model_name,load_best=load_best,device=device,evaluating=True)
         self.update_interval=update_interval
         self.device=device
         self.indicators={}    
 
     @staticmethod
-    def load_model(model,root_path=cwd,model_name=None,load_best=True):
+    def load_model(model,root_path=cwd,model_dir=None,model_name=None,load_best=False,device="cpu",evaluating=True):
         best="_best" if load_best else ""
+        model_dir=model_name if model_dir is None else model_dir
+        model.to(device)
+        if evaluating:
+            model.eval()
         model.load_state_dict(
-            torch.load(f"{root_path}/model/info/{model_name}/{model_name}{best}_params.pth")
+            torch.load(f"{root_path}/model/info/{model_dir}/{model_name}{best}_params.pth")
         )
 
     def load_tensor(self,x:Union[List,Tuple]):
@@ -64,7 +66,7 @@ class Evaluator:
 
                 timer=Timer()
                 cur_steps=1
-                all_steps=len(dataloader.dataset)//dataloader.batch_size
+                all_steps=len(dataloader.sampler)//dataloader.batch_size
                 for indicator in self.indicators.values():
                     indicator.reset()
 

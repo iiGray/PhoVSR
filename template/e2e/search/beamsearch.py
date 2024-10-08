@@ -26,9 +26,10 @@ class DecodeSearch:
     you can also use 'self.inited_state' to gain the decoder init input state
     but actually 'self.dState' is the same as 'self.inited_state' at first
     '''
-    def __init__(self,sos,eos,max_len=50):
+    def __init__(self,sos,eos,sep=" ",max_len=50):
         self.sos=sos
         self.eos=eos
+        self.sep=sep
         self.max_len=max_len
         self.logzero=-torch.finfo(torch.float16).min**2
     def init_dState(self,rState):
@@ -52,6 +53,7 @@ class DecodeSearch:
         init decoder state,
         include rawState and dState
         '''
+        self.rawS=State(*rawState)
         self.rState=rawState
         self.dState=self.init_dState(self.rState)
         self.device=self.rState.feats.device
@@ -87,12 +89,13 @@ class Beam(DecodeSearch):
     def __init__(self,
                  sos,
                  eos,
-                 vocab_size,
+                 sep=" ",
+                 vocab_size=None,
                  max_len=50,
                  beam_size=5,
                  blank=0,
                  ):
-        super().__init__(sos,eos,max_len)
+        super().__init__(sos,eos,sep,max_len)
         self.vocab_size=vocab_size
         self.beam_size=beam_size
         self.exclude=("ctc",)
@@ -157,6 +160,10 @@ class Beam(DecodeSearch):
             #update num_beams
             self.num_beams=k_prob.size(0)
 
+            
+            for scorer in scorers.values():
+                scorer.selectNext(torch.concat(k_pref),
+                                  torch.concat(k_pred).flatten())
             #update prefixes
             e_full=self.dState[e_pref].concat_(State(e_pred)).feats
             prefixes.extend(Prefix(e_full,e_prob).unbatchify())
@@ -245,11 +252,11 @@ class BatchBeam(Beam):
             #update batch_num_beams
             self.batch_num_beams=[k_prob.size(0) for k_prob in bk_prob]
 
-
-            for scorer in scorers.values():
+            for name,scorer in scorers.items():
+                if name in self.exclude:continue
                 scorer.selectNext(torch.concat(bk_pref),
                                   torch.concat(bk_pred).flatten())
-
+                
             #update prefixes
             be_full=[self.dState[e_pref].concat_(State(e_pred)).feats\
                      for e_pref,e_pred in zip(be_pref,be_pred)]
@@ -278,22 +285,3 @@ class BatchBeam(Beam):
 
         
         return [prefixes_per_sample.sorted().prefix for prefixes_per_sample in prefixes]
-
-
-
-if __name__=="__main__":
-    
-    a=torch.tensor([[2,3,4,5,6],
-                    [1,2,3,4,5]])
-    
-    i=torch.tensor([[1,1,1,1,0],
-                    [0,1,0,0,0]])
-    i=i.flatten()
-    print(i.flatten().nonzero(as_tuple=True))
-    # print(a[torch.arange(2)[:,None],i])
-    # print(torch.max(torch.randn(40),dim=-1))
-    # pass
-    a=State(torch.randn(4,0,5))
-    # print(a[:,1:2].valen)
-    print(not a)
-

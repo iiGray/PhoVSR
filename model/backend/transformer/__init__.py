@@ -77,16 +77,7 @@ class RelTransformer(nn.Module):
             use_cache,
             norm_type
         )
-        # self.decoder=RelDecoder(
-        #     num_layers,
-        #     idims,
-        #     hdims,
-        #     num_heads,
-        #     char_list_len,
-        #     dropout,
-        #     use_cache,
-        #     norm_type
-        # )
+
         self.decoder=Decoder(
             dnum_layers,
             idims,
@@ -108,17 +99,3 @@ class RelTransformer(nn.Module):
             self.encode(x,x_valid_len)
         )
 
-def valid_normTransformer():
-    t=RelTransformer(4,30,60,3,norm_type=PreNorm)
-    x=torch.randn(3,8,30)
-    y=torch.randn(3,5,30)
-
-    x_valid_len=torch.tensor([4,6,7]).long()
-    y_valid_len=torch.tensor([2,2,5]).long()
-
-    out=t(x,y,x_valid_len,y_valid_len)
-    print(out.shape)
-    print(t)
-
-if __name__=="__main__":
-    valid_normTransformer()

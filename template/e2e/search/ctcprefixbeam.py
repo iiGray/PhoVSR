@@ -34,7 +34,7 @@ class CTCPrefixBeam(DecodeSearch):
 
         batch_size,num_steps,vocab_size=X.shape
 
-        '''select main idx'''
+
         top_num_steps_idx=set()
         for i in range(num_steps):
            prob, ids=X[0,i].topk(num_steps)    
@@ -86,6 +86,3 @@ class CTCPrefixBeam(DecodeSearch):
              if p[i]!=self.blank and (i==0 or p[i]!=p[i-1])]
         prefixes.append(Prefix([ret],0.))
         return prefixes.prefix
-    
-if __name__=="__main__":
-    pass

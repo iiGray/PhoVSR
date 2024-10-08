@@ -11,7 +11,7 @@ if __name__=="__main__":
 
 from model.backend.normalize import *
 
-'''self'''
+
 
 def get_mask(t,valid_len,zero_triu):
     '''
@@ -31,31 +31,6 @@ def get_mask(t,valid_len,zero_triu):
     mask=mask[:,None,:,:] # (b, 1(h), qt, kt)
     return ~mask
 
-
-class RoPositionEncoding(nn.Module):
-    def __init__(self,num_dims,dropout,max_len=1000):
-        super().__init__()
-        self.dropout=nn.Dropout(dropout)
-        
-        position=torch.arange(max_len,dtype=torch.float32)[:,None]
-        inv_denominator=torch.exp(
-            torch.arange(0,num_dims,2).float()\
-            *-(4.*torch.log(torch.tensor(10.0))/num_dims)
-        )
-
-        self.sin=torch.sin(position*inv_denominator)
-        self.cos=torch.cos(position*inv_denominator)
-        
-    def forward(self,x,current_steps=None):
-        if self.sin.device!=x.device:
-            self.sin=self.sin.to(x.device)
-            self.cos=self.cos.to(x.device)
-        x1,x2=x[..., 0::2], x[..., 1::2]
-        if current_steps is None:
-            sin,cos=self.sin[:x.size(2)][None,None,:,:],self.cos[:x.size(2)][None,None,:,:]
-        else:
-            sin,cos = self.sin[[current_steps]][None,None,:,:],self.cos[[current_steps]][None,None,:,:]
-        return torch.stack([x1 * cos - x2 * sin, x2 * cos + x1 * sin], dim=-1).flatten(-2)
     
 class AbsPositionEncoding(nn.Module):
     def __init__(self,num_dims,dropout,max_len=6000):
@@ -98,7 +73,6 @@ class RoMultiHeadAttention(nn.Module):
             setattr(self,"W"+i,nn.Linear(num_dims,num_dims))
             # nn.init.xavier_uniform_(getattr(self,"W"+i).weight)
 
-#         self.rel_enc=RoPositionEncoding(num_dims=self.per_head,dropout=dropout)
         self.abs_enc=AbsPositionEncoding(num_dims=self.per_head,dropout=dropout)
 
     def forward_qkv(self,q,k,v):
@@ -149,12 +123,6 @@ class RoMultiHeadAttention(nn.Module):
         
         PQ=self.abs_enc(Q,current_steps)#.transpose(1,2).reshape(K.size(0),-1,self.num_dims)
         PK=self.abs_enc(K)#.transpose(1,2).reshape(K.size(0),-1,self.num_dims)
-#         wQ=self.Wm(PQ).view(b,q.size(1),-1,self.per_head).transpose(1,2)
-#         wK=self.Wn(PK).view(b,k.size(1),-1,self.per_head).transpose(1,2)
-#         RQ=(self.abs_enc(wQ) + PQ.view(b,q.size(1),-1,self.per_head).transpose(1,2))/2.
-#         RK=(self.abs_enc(wK) + PK.view(b,k.size(1),-1,self.per_head).transpose(1,2))/2. #这个式子未测试:(xi Wq Fi + xi Wq Fi Wm Fi) (xj Wk Fj + xj Wk Fj Wn Fj) ^T
-        
-#         scores=self.get_scores(RQ,RK)
         
         scores=self.get_scores(PQ,PK)
         

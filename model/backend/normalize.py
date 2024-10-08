@@ -59,27 +59,3 @@ class AddNorm(nn.Module):
             return out,*fout
         return out
 
-
-
-# class A(nn.Module):
-#     def __init__(self):
-#         super().__init__()
-#         self.m=nn.Linear(5,5)
-#         self.n=nn.Linear(5,5)
-#     def forward(self,x,y):
-#         return self.m(x),self.n(x)+y
-
-if __name__=="__main__":
-    # a=PreNorm(5,A())
-    # import torch
-    # t=torch.randn(2,3,5)
-    # # y=torch.randn(2,3,5)
-    # m,n=a(t,t)
-    # print(m,n)
-    # print(a(t,t))
-    # print(a(t,y).shape)
-
-    pass
-    
-
-

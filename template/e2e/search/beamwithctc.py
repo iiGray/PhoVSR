@@ -8,12 +8,13 @@ class BatchBeamWithCTCPrefix(BatchBeam):
     def __init__(self,
                  sos,
                  eos,
-                 vocab_size,
+                 sep=" ",
+                 vocab_size=None,
                  max_len=50,
                  beam_size=5,
                  ctc_beam_size=30,
                  blank=0):
-        super().__init__(sos, eos, vocab_size, max_len, beam_size)
+        super().__init__(sos, eos, sep, vocab_size, max_len, beam_size)
         self.ctc_beam_size=ctc_beam_size
         self.blank=blank
         self.exclude=("ctc",)
@@ -106,16 +107,3 @@ class BatchBeamWithCTCPrefix(BatchBeam):
 
         return [prefixes_per_sample.sorted().prefix for prefixes_per_sample in prefixes]
 
-            
-
-
-if __name__=="__main__":
-    a=torch.zeros((4,10))
-    b=torch.randn(4,3)
-    c=torch.tensor([[0,2,5],
-                    [3,4,5],
-                    [6,7,8],
-                    [0,1,9]])
-    
-    a[torch.arange(c.size(0))[:,None],c]=b
-    print(a)

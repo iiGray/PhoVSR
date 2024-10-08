@@ -244,19 +244,3 @@ class Scorer(NamedTuple):
     def device(self):
         return self.state.device
 
-if __name__=="__main__":
-    s=State(torch.randn(3,12,5),torch.tensor([8,7,5]))
-    # print(s.feats,s.valen)
-    s=s[torch.tensor([1,2])[:,None]]
-    # print(s.feats.shape,s.valen)
-    st=State(torch.randn(3,0,5))
-    # print(not st.feats)
-    class A:
-        def __init__(self,x):
-            self.x=x
-        def __bool__(self):
-            return self.x==False
-    print(not A(False))
-    
-    
-    pass

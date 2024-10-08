@@ -32,8 +32,6 @@ class FrontEnd3D(nn.Sequential):
     def __init__(self,grayMode=True):
         in_channels=1 if grayMode else 3
         super().__init__(
-            # nn.Conv2d(in_channels,64,kernel_size=(7,7),stride=(2,2),padding=(3,3)),#'''(bs*ns,64,32,64)'''
-            # nn.MaxPool2d(kernel_size=(3,3),stride=(2,2),padding=(1,1)),#'''(bs*ns,64,16,32)'''
             nn.Conv3d(in_channels, 64, (5, 7, 7), (1, 2, 2), (2, 3, 3), bias=False),
             BatchNorm3d(64),
             Swish(),
@@ -83,11 +81,3 @@ class FrontEndModule(nn.Module):
                                           )
         padded_x, pxl= rnn_utils.pad_packed_sequence(packed_x)
         return padded_x.transpose(0,1)
-
-if __name__=="__main__":
-    resnet18=ResNet([2,2,2,2])
-    # print(ResNet(,[2,2,2,2]))
-    arr=torch.randn(5,51,1,88,88)
-    print(FrontEndModule()(arr).shape)
-    # print(resnet18(FrontEnd3D(False)(arr)).shape)
-    # print(os.pardir)
