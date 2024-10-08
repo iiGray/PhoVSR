@@ -24,7 +24,9 @@ Download the wheels and install through
 [https://download.pytorch.org/whl/torch/](https://download.pytorch.org/whl/torch/)
 
 Version:
+
 ###torch : torch-1.13.0+cu117-cp39###
+
 ###torchvision: torchvision-0.14.1+cu117-cp39###
 
 
