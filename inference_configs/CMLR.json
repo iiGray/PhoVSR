@@ -1,0 +1,9 @@
+{
+    "max_len"   :40, 
+    "weights":{
+        "decoder"        :0.9,
+        "lm"             :0.6,
+        "lengthpenalty"  :0.5,
+        "ctc"            :0.1 
+    }
+}

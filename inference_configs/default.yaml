@@ -1,0 +1,15 @@
+defaults:
+  - _self_
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+hydra:  
+  output_subdir: null  
+  run:  
+    dir: .
+
+
+model_name: "CMLR"
+mode      : "show"
+batch_size: 160
+beam_size : 30
+device    :  "cuda:0"

@@ -1,6 +1,6 @@
 '''---  import sys   ---'''
 import os,random
-import cv2,json
+import json
 import torch,torchvision
 import torch.utils.data as tud
 from torchvision import transforms as tfs
@@ -111,8 +111,6 @@ class Dataset(tud.Dataset):
             
         if "train" in mode and "pretrain" not in mode:
             self.mode="train"
-#             if convert_gray:
-#                 self.transforms.transforms.insert(0,self.togray)
         def collate(self,batch):
             return
         
@@ -120,16 +118,6 @@ class Dataset(tud.Dataset):
         return x.transpose(0,1)
     
     def prenorm(self,x):return x.permute(0,3,1,2)/255.
-    def togray(self,x):
-        return torch.tensor([cv2.cvtColor(f.numpy(),cv2.COLOR_RGB2GRAY).tolist()\
-                              for f in x]).unsqueeze(-1) 
-    
-    def setGray(self,mode=True):
-        if not (self.convert_gray ^ mode):return
-        self.convert_gray=mode
-        if mode:self.transforms.transforms.insert(0,self.togray)
-        else:self.transforms.transforms.pop(0)
-
 
 class CMLRDataset(Dataset):
     def __init__(self,  

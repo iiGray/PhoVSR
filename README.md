@@ -1,6 +1,6 @@
 # PhoVSR
 
-## Uodate
+## Update
 
 We have released our evaluating recipe for PhoVSR on LRS2, CMLR
 
@@ -15,11 +15,43 @@ cd PhoVSR
 
 2. Set up the environment by:
 ```
-conda create 
+conda create -n phovsr python==3.8
+conda activate phovsr
 ```
 
-3. Install pytorch,torchvision,einops,pypinyin
+3. Install torch, torchvision
+Download the wheels and install
+[https://download.pytorch.org/whl/torch/](https://download.pytorch.org/whl/torch/)
+
+Version:
+--torch : torch-1.13.0+cu117-cp39--
+--torchvision: torchvision-0.14.1+cu117-cp39--
+
+
+
+4. Install hydra, einops, pypinyin
+
+```
+pip install -r requirements.txt
+```
+
+
+## Evaluation
+Calculate the WER/CER:
+```
+python test.py mode=eval
+```
+Print result
+```
+python test.py mode=show
+```
+
+
 ## PhoVSR models
+
+
+Put models in the corresponding folders under the folder "model/info"
+
 
 <details open>
 
@@ -33,6 +65,7 @@ conda create
 |   **Language Model**  |     |         |  [BaiduDrive]()   |     196     |
 
 </details>
+
 
 
 
