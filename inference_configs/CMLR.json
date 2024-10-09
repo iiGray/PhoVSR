@@ -4,6 +4,6 @@
         "decoder"        :0.9,
         "lm"             :0.6,
         "lengthpenalty"  :0.5,
-        "ctc"            :0.1 
+        "ctc"            :0.3 
     }
 }

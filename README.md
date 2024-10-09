@@ -20,7 +20,9 @@ conda create -n phovsr python==3.8
 conda activate phovsr
 ```
 
-3. Install torch, torchvision
+## Installation
+
+1. Install torch, torchvision
 Download the wheels and install through
 [https://download.pytorch.org/whl/torch/](https://download.pytorch.org/whl/torch/)
 
@@ -31,7 +33,7 @@ Version:
 **torchvision: torchvision-0.14.1+cu117-cp39**
 
 
-4. Install hydra, einops, pypinyin
+2. Install hydra, einops, pypinyin
 
 ```
 pip install -r requirements.txt

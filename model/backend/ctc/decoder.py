@@ -397,7 +397,9 @@ class PhonemeCTCdecoder(nn.Module,EvalModule):
 
         # (batch_beam_size, phoneme_vocab_size, vocab_size)
 
-        self.matP=(curP-self.prefP)[:,:,None].repeat(1,1,self.p2g.size(-1)) * self.p2g[None,:,:] 
+        self.matP=(curP
+                   -self.prefP
+                   )[:,:,None].repeat(1,1,self.p2g.size(-1)) * self.p2g[None,:,:] 
         
 #         self.matP[:,[0,1,2,3],:]=-torch.inf
 
