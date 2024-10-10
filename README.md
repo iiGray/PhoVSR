@@ -44,11 +44,7 @@ pip install -r requirements.txt
 
 Download models at [PhoVSR models](#PhoVSR-models) and put models into the corresponding folders first.
 
-Calculate the WER/CER:
-```
-python test.py mode=eval
-```
-Print result:
+Print result, the default model is the Chinese lip reading trained from CMLR:
 ```
 python test.py mode=show
 ```
@@ -62,7 +58,12 @@ Change Model:
 ```
 python test.py model_name=LRS2
 ```
-
+If you want to change the test set and get the evluation matrics, please change the data at XXXXXX and run
+Calculate the WER/CER:
+```
+python test.py mode=eval
+```
+The defuault CER for 8 samples is XXXXX.
 ## PhoVSR models
 
 
