@@ -78,7 +78,7 @@ Put models into the corresponding folders under the folder "model/info"
 |     Components        |  Hours| WER  |                               url                                         |  size (MB)  |
 |:----------------------|:-----:|:-----:|-----------------------------------------------------------------------------------:|:-----------:|
 |   **VSR Model**       | 28h |    56.2 |[GoogleDrive](https://drive.google.com/file/d/1USsLFKtI0xspWqyDHxX2RX0rC7iB9onl/view?usp=sharing) or [BaiduDrive](https://pan.baidu.com/s/1YgCUp0rOxVdA6Ww5DvEK6A?pwd=bz4p)   |     202     |
-|   **Language Model**  |     |         | [GoogleDrive](https://drive.google.com/file/d/1lEdyGB0JBMkhSpKVOQklA63c_loqtGTH/view?usp=sharing) or [BaiduDrive](https://pan.baidu.com/s/1x3LmxkFpxgfMxmnLXKlXfQ?pwd=epmu)   |     196     |
+|   **Language Model**  |  N/A   |    N/A     | [GoogleDrive](https://drive.google.com/file/d/1lEdyGB0JBMkhSpKVOQklA63c_loqtGTH/view?usp=sharing) or [BaiduDrive](https://pan.baidu.com/s/1x3LmxkFpxgfMxmnLXKlXfQ?pwd=epmu)   |     196     |
 
 </details>
 
@@ -94,6 +94,6 @@ Put models into the corresponding folders under the folder "model/info"
 |     Components        |  Hours| CER  |                               url                                         |  size (MB)  |
 |:----------------------|:-----:|:-----:|-----------------------------------------------------------------------------------:|:-----------:|
 |   **VSR Model**       | 61h |    7.9 |    [GoogleDrive](https://drive.google.com/file/d/1g6Oyjl6SjkVwLDYv4BVT2ShQZ_rlsyyu/view?usp=drive_link) or [BaiduDrive](https://pan.baidu.com/s/14IoqyjXF1mFGA5jAiw6ygQ?pwd=exd5)    |     207    |
-|   **Language Model**  |     |         |   [GoogleDrive](https://drive.google.com/file/d/1VxJlTzb54KZVsY6g7Ra3xLEMvIRs0nFc/view?usp=sharing) or [BaiduDrive](https://pan.baidu.com/s/12Ed2Who3CXDAWKJBwfM6Mg?pwd=39vj) |     201    |
+|   **Language Model**  |  N/A   | N/A     |   [GoogleDrive](https://drive.google.com/file/d/1VxJlTzb54KZVsY6g7Ra3xLEMvIRs0nFc/view?usp=sharing) or [BaiduDrive](https://pan.baidu.com/s/12Ed2Who3CXDAWKJBwfM6Mg?pwd=39vj) |     201    |
 
 </details>
