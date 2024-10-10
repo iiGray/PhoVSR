@@ -82,7 +82,7 @@ Put models into the corresponding folders under the folder "model/info"
 
 </details>
 
-This model is trained on the 28h LRS2 training set dataset and get 56.2% WER. 
+This model is trained on the 28h LRS2 training set and get 56.2% WER. 
 
 
 <details open>
@@ -98,5 +98,5 @@ This model is trained on the 28h LRS2 training set dataset and get 56.2% WER.
 
 </details>
 
-This model is trained on the 61h CMLR training set dataset and get 7.9% WER. 
+This model is trained on the 61h CMLR training set and get 7.9% WER. 
 
