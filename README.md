@@ -62,7 +62,7 @@ If you want to run the full test set and get the evluation matrics, please downl
 ```
 python test.py mode=eval
 ```
-It will calculate the WER/CER. The current defuault CER for current provided 8 samples is XXXXX.
+It will calculate the WER/CER. The current defuault CER for provided 8 samples in this repo is XXXXX.
 ## PhoVSR models
 
 
