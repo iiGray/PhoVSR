@@ -53,7 +53,7 @@ Print result:
 python test.py mode=show
 ```
 
-If memory is not enough, run like:
+If memory is low, run like:
 ```
 python test.py mode=show batch_size=2 
 ```
