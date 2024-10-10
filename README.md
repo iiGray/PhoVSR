@@ -52,9 +52,13 @@ python test.py mode=show
 
 If memory is not enough, run like
 ```
-python test.py mode=show batch_size=2 beam_size=3
+python test.py mode=show batch_size=2 
 ```
 
+Change Model:
+```
+python test.py model_name=LRS2
+```
 
 ## PhoVSR models
 

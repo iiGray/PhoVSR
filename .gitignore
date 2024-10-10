@@ -4,4 +4,5 @@
 **/*.pth
 **/*.pkl
 # **/*.mp4
+**/eval_result.txt
 **/tempCodeRunnerFile.py

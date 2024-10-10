@@ -26,9 +26,9 @@ def main(cfg):
 
     if model_name=="CMLR":
         from inference_configs.CMLR import model,lm,test_set,lengthpenalty
-    if model_name=="CMLR":
-        '''We'll upload it soon.'''
-        pass
+    if model_name=="LRS2":
+        from inference_configs.LRS2 import model,lm,test_set,lengthpenalty
+
 
     bcsearch=BatchBeamWithCTCPrefix(sos=test_set.vocab["<sos>"],
                                 eos=test_set.vocab["<eos>"],
@@ -41,7 +41,7 @@ def main(cfg):
                                 )
     w=configs["weights"]
     evaler=PhoE2EEvaluator(model,
-                    model_name="CMLR",
+                    model_name=model_name,
                     vocab=test_set.vocab,
                     device=device,
                     load_best=True,

@@ -12,7 +12,7 @@ from typing import Literal
 '''---------------------'''
 _=os.path.dirname(__file__)
 cmlr=_+"/info/CMLR/"
-# lrs2=_+"/info/LRS2/"
+lrs2=_+"/info/LRS2/"
 fadir=lambda x:os.path.dirname(x)
 
 class Sampler(tud.sampler.Sampler):
@@ -147,7 +147,6 @@ class CMLRDataset(Dataset):
         line=open(self.text_pth+file+".txt","r",encoding="utf-8").readline().strip()
         return line
 
-
     def __getitem__(self,i):
         file=self.files[i]
         line=open(self.text_pth+file+".txt","r",encoding="utf-8").readline().strip()
@@ -227,3 +226,94 @@ class CMLRPhonemeDataset(CMLRDataset):
 
         return (x.transpose(0,1),xl), (t.transpose(0,1),tl,p.transpose(0,1))
 
+class LRS2PhonemeDataset(Dataset):
+    def __init__(self,
+                 mode="test",
+                 convert_gray=True,
+                 text_only=False,
+                 augment=False,):
+        
+        super().__init__(mode,convert_gray,text_only,augment)
+        self.video_pth=lrs2+"videos/"
+        self.text_pth=lrs2+"texts/"
+        self.mode=mode
+        with open(lrs2+mode+".csv","r") as f:
+            files=f.readlines()
+        self.files=[k.strip().replace("/","#") for k in files]
+
+
+        config_pth=os.path.join(fadir(fadir(__file__)),"configs","lrs2_config.json")
+
+        config=json.load(open(config_pth,"rb"))
+        char_list=config["char_list"]
+        phoneme_list=config["phoneme_list"]
+
+        self.g2p=torch.tensor(config["g2p"])
+        self.p2g=torch.tensor(config["p2g"])
+
+        self.vocab=Vocab(char_list)
+        self.phoneme_vocab=Vocab(phoneme_list)
+        
+    def __len__(self):
+        return len(self.files)
+    
+    def __getitem__(self, i):
+        path=self.files[i].strip()
+        if self.mode=="test":
+            path=path.strip().split()[0]
+        with open(self.text_pth+path+".txt","r",encoding="utf-8") as f:
+            line=f.readline().strip().split()
+            phoneme=f.readline().strip().split()
+
+            line=line+["<sep>"]
+            line=(" ".join(line)).split("<sep>")
+            line.pop()
+            line=[w for k in line for w in (k.strip()+"<sep>").split()]
+            # if self.no_sep_phoneme:
+            #     phoneme=(" ".join(phoneme)).replace("<sep>","").strip().split()
+            # else:
+            phoneme=phoneme+["<sep>"]
+            phoneme=(" ".join(phoneme)).split("<sep>")
+            phoneme.pop()
+            phoneme=[w for k in phoneme for w in (k.strip()+"<sep>").split()]
+               
+
+            
+            
+        if self.text_only:
+            return line,phoneme,path
+        video,_,info=torchvision.io.read_video(self.video_pth+path+".mp4",pts_unit='sec')
+
+        return self.transforms(video),line,phoneme
+        
+    def collate(self,batch):
+        if self.text_only:
+            t,*args=zip(*batch)
+            tl=torch.tensor([len(txt) for txt in t])
+            
+            t=[self.vocab[txt] for txt in t]
+            
+            xt=[torch.tensor([self.vocab["<sos>"]]+k) for k in t]
+            xt=rnn_utils.pad_sequence(xt)
+            
+            yt=[torch.tensor(k+[self.vocab["<eos>"]]) for k in t]
+            yt=rnn_utils.pad_sequence(yt)
+            
+            
+            return (xt.transpose(0,1), tl+1),(yt.transpose(0,1), tl+1)
+            
+            
+            
+        x,t,p=zip(*batch)
+        xl=torch.tensor([k.shape[0] for k in x])
+        tl=torch.tensor([len(txt) for txt in t])
+
+        x=rnn_utils.pad_sequence(x)
+
+        t=[torch.tensor(self.vocab[txt]) for txt in t]
+        t=rnn_utils.pad_sequence(t)
+
+        p=[torch.tensor(self.phoneme_vocab[py]) for py in p]
+        p=rnn_utils.pad_sequence(p)
+
+        return (x.transpose(0,1),xl), (t.transpose(0,1),tl,p.transpose(0,1))
