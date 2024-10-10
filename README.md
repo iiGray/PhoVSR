@@ -70,8 +70,8 @@ Put models in the corresponding folders under the folder "model/info"
 
 |     Components        |  Hours| WER  |                               url                                         |  size (MB)  |
 |:----------------------|:-----:|:-----:|-----------------------------------------------------------------------------------:|:-----------:|
-|   **VSR Model**       | 28h |    56.2 |[BaiduDrive]()   |     203     |
-|   **Language Model**  |     |         |  [BaiduDrive]()   |     196     |
+|   **VSR Model**       | 28h |    56.2 |[Coming soon]()   |     203     |
+|   **Language Model**  |     |         |  [Coming soon]()   |     196     |
 
 </details>
 

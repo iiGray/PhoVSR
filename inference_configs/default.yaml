@@ -11,5 +11,5 @@ hydra:
 model_name: "CMLR"
 mode      : "show"
 batch_size: 160
-beam_size : 30
+beam_size : 20
 device    :  "cuda:0"
