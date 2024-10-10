@@ -129,7 +129,7 @@ def phonemize(word):
     
 
 
-class PhoneticSegmentation:
+class PhoneticAlignment:
     '''
     The Algorithm1 in paper
     '''
@@ -463,7 +463,7 @@ if __name__=="__main__":
     Here's an example how to use it
     '''
 
-    ps=PhoneticSegmentation()
+    ps=PhoneticAlignment()
 
 
     for word in ["hello","world","how","are","you"]:
