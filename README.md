@@ -58,7 +58,7 @@ Change Model:
 ```
 python test.py model_name=LRS2
 ```
-If you want to change the test set and get the evluation matrics, please change the data at XXXXXX and run
+If you want to change the test set and get the evluation matrics, please change the data at ./data/PhoVSR/datas/info and run
 Calculate the WER/CER:
 ```
 python test.py mode=eval
