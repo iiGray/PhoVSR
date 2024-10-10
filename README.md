@@ -44,11 +44,7 @@ pip install -r requirements.txt
 
 Download models at [PhoVSR models](#PhoVSR-models) and put models into the corresponding folders first.
 
-Calculate the WER/CER:
-```
-python test.py mode=eval
-```
-Print result:
+Print result, the default model is the Chinese lip reading trained from CMLR:
 ```
 python test.py mode=show
 ```
@@ -62,7 +58,11 @@ Change Model:
 ```
 python test.py model_name=LRS2
 ```
-
+If you want to run the full test set and get the evluation matrics, please download the [LRS2](https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrs2.html) and [CMLR](https://www.vipazoo.cn/CMLR.html) dataset and change the data at ./data/PhoVSR/datas/info then run
+```
+python test.py mode=eval
+```
+It will calculate the WER/CER. The current default CER for provided 8 samples in this repo is 4.2%.
 ## PhoVSR models
 
 
@@ -82,7 +82,7 @@ Put models into the corresponding folders under the folder "model/info"
 
 </details>
 
-This model is trained on the 28h LRS2 training set and get 56.2% WER. 
+This VSR model is trained on the 28h LRS2 training set and get 56.2% WER. The language model is trained from XXX as described in XXX. 
 
 
 <details open>
@@ -98,5 +98,5 @@ This model is trained on the 28h LRS2 training set and get 56.2% WER.
 
 </details>
 
-This model is trained on the 61h CMLR training set and get 7.9% CER. 
+This VSR model is trained on the 61h CMLR training set and get 7.9% CER. The language model is trained from XXX as described in XXX. 
 
