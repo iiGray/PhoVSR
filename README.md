@@ -58,7 +58,7 @@ Change Model:
 ```
 python test.py model_name=LRS2
 ```
-If you want to run the full test set and get the evluation matrics, please download CMLR change the data at ./data/PhoVSR/datas/info and run
+If you want to run the full test set and get the evluation matrics, please download the [LRS2](https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrs2.html) and [CMLR](https://www.vipazoo.cn/CMLR.html) dataset and change the data at ./data/PhoVSR/datas/info then run
 ```
 python test.py mode=eval
 ```
