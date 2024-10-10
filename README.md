@@ -98,5 +98,5 @@ This model is trained on the 28h LRS2 training set and get 56.2% WER.
 
 </details>
 
-This model is trained on the 61h CMLR training set and get 7.9% WER. 
+This model is trained on the 61h CMLR training set and get 7.9% CER. 
 
