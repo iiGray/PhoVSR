@@ -45,12 +45,12 @@ Calculate the WER/CER:
 ```
 python test.py mode=eval
 ```
-Print result
+Print result:
 ```
 python test.py mode=show
 ```
 
-If memory is not enough, run like
+If memory is not enough, run like:
 ```
 python test.py mode=show batch_size=2 
 ```
@@ -74,8 +74,8 @@ Put models in the corresponding folders under the folder "model/info"
 
 |     Components        |  Hours| WER  |                               url                                         |  size (MB)  |
 |:----------------------|:-----:|:-----:|-----------------------------------------------------------------------------------:|:-----------:|
-|   **VSR Model**       | 28h |    56.2 |[Coming soon]()   |     203     |
-|   **Language Model**  |     |         |  [Coming soon]()   |     196     |
+|   **VSR Model**       | 28h |    56.2 |[GoogleDrive]() or [BaiduDrive](https://pan.baidu.com/s/1YgCUp0rOxVdA6Ww5DvEK6A?pwd=bz4p)   |     202     |
+|   **Language Model**  |     |         | [GoogleDrive]() [BaiduDrive](https://pan.baidu.com/s/1x3LmxkFpxgfMxmnLXKlXfQ?pwd=epmu)   |     196     |
 
 </details>
 
