@@ -138,6 +138,3 @@ class Evaluator:
         show the predict result of the dataloader
         '''
         raise NotImplementedError
-
-if __name__=="__main__":
-    pass

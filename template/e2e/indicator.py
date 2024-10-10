@@ -83,11 +83,3 @@ class CER(Indicator):
     @property
     def value(self):return float(self.error/self.total)
 
-if __name__=="__main__":
-    bleu=Bleu(weights=[0.1,0.3,0.5,0.7])
-
-    bleu.add(["this","is", "a", "test"],["this", "a", "test"])
-    # bleu.add(["another", "is","u","u","u","y"],["another", "test","is","u","u","y" ])
-
-    print(bleu.value)
-    # print(bleu.P,bleu.L)

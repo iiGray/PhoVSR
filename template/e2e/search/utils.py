@@ -48,11 +48,3 @@ class EndedPrefixes(NamedTuple):
         self.prefixes.sort(reverse=True)
         return self
     
-
-if __name__=="__main__":
-    import sys,os
-    sys.path.append(os.path.dirname(__file__))
-    prefixes=EndedPrefixes([])
-    print(prefixes.prefix)
-    prefixes.extend(Prefix(torch.randn(0,2),torch.randn(0,1)).unbatchify())
-    print(prefixes.prefix)
