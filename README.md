@@ -41,6 +41,9 @@ pip install -r requirements.txt
 
 
 ## Evaluation
+
+Download models at [PhoVSR models](#PhoVSR-models) and put models into the corresponding folders first.
+
 Calculate the WER/CER:
 ```
 python test.py mode=eval
@@ -63,7 +66,7 @@ python test.py model_name=LRS2
 ## PhoVSR models
 
 
-Put models in the corresponding folders under the folder "model/info"
+Put models into the corresponding folders under the folder "model/info"
 
 
 <details open>
