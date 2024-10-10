@@ -82,7 +82,7 @@ Put models into the corresponding folders under the folder "model/info"
 
 </details>
 
-This VSR model is trained on the 28h LRS2 training set and get 56.2% WER. The language model is trained from XXX as described in XXX. 
+This VSR model is trained on the 28h LRS2 training set and get 56.2% WER. The language model is trained from plain text datas from LRS2 training set. 
 
 
 <details open>
@@ -98,5 +98,5 @@ This VSR model is trained on the 28h LRS2 training set and get 56.2% WER. The la
 
 </details>
 
-This VSR model is trained on the 61h CMLR training set and get 7.9% CER. The language model is trained from XXX as described in XXX. 
+This VSR model is trained on the 61h CMLR training set and get 7.9% CER. The language model is trained from plain text datas from CMLR training set. 
 
