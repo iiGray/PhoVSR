@@ -4,7 +4,7 @@ if __name__=="__main__":
 
 from model.frontend import *
 from model.backend import *
-from model.loss import *
+
 class VSR(nn.Module):
     def __init__(self,
                  enum_layers,
