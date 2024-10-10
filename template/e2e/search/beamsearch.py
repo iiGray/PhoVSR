@@ -19,9 +19,9 @@ from template.e2e.utils import State,Scorer,EvalModule
 
 class DecodeSearch:
     '''
-    By inheriting it, you have to overload the '__init__' and 'forward'
+    To inherit it, you have to overload the '__init__' and 'forward'
     you don't have to initialize rState(prepared in __call__) and dState(from scorer),
-    but use 'self.rState' and self.dState directly
+    but use 'self.rState' and 'self.dState' directly
 
     you can also use 'self.inited_state' to gain the decoder init input state
     but actually 'self.dState' is the same as 'self.inited_state' at first
@@ -84,7 +84,7 @@ class DecodeSearch:
 
 class Beam(DecodeSearch):
     '''
-    decoder of seq2seq
+    Decoder of seq2seq tasks, parallel but only accept one sample simultaneously.
     '''
     def __init__(self,
                  sos,
@@ -184,6 +184,9 @@ class Beam(DecodeSearch):
 class BatchBeam(Beam):
     '''
     Batch sample batch processing
+
+    We achieve an efficient Batch Beam Search decoding, in which any beam of 
+    any sample in one batch is completely parallel.
     '''
     def batch_topk(self,score:torch.Tensor,batch_k):
         '''

@@ -24,7 +24,7 @@ class Vocab:
 
 class State:
     '''
-    it can be used for any binary situation,
+    It can be used for any binary situation,
     where the first represents the output features,
           the second represents the valid_len of the features
 
@@ -164,10 +164,10 @@ class State:
 
 class EvalModule:
     '''
-    decoder have to inherit it to gain its methods
+    Decoders have to inherit it to gain its methods
     
-    use the method 'scorer' to gain a decorated module, which is 
-    able to compute probabilities relying on eState by using method 'scoring' directly
+    Use the method 'scorer' to gain a decorated module, which is able to 
+    compute probabilities relying on eState by using method 'scoring' directly
     '''
     
     def scorer(self,eState:State,weight=1.0):
@@ -208,9 +208,9 @@ class EvalModule:
 
 class Scorer(NamedTuple):
     '''
-    decorate a decode model to gain weight and score
+    Decorate a decode model to gain weight and score
 
-    often not be used directly,but to be used via the method 'scorer' of EvalModule
+    Normally not be used directly, but to be used via the method 'scorer' of EvalModule
     '''    
     model:EvalModule
     state:State 
