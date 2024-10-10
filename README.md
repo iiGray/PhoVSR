@@ -75,7 +75,7 @@ Put models in the corresponding folders under the folder "model/info"
 |     Components        |  Hours| WER  |                               url                                         |  size (MB)  |
 |:----------------------|:-----:|:-----:|-----------------------------------------------------------------------------------:|:-----------:|
 |   **VSR Model**       | 28h |    56.2 |[GoogleDrive]() or [BaiduDrive](https://pan.baidu.com/s/1YgCUp0rOxVdA6Ww5DvEK6A?pwd=bz4p)   |     202     |
-|   **Language Model**  |     |         | [GoogleDrive]() [BaiduDrive](https://pan.baidu.com/s/1x3LmxkFpxgfMxmnLXKlXfQ?pwd=epmu)   |     196     |
+|   **Language Model**  |     |         | [GoogleDrive]() or [BaiduDrive](https://pan.baidu.com/s/1x3LmxkFpxgfMxmnLXKlXfQ?pwd=epmu)   |     196     |
 
 </details>
 
