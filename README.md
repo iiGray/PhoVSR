@@ -58,12 +58,11 @@ Change Model:
 ```
 python test.py model_name=LRS2
 ```
-If you want to change the test set and get the evluation matrics, please change the data at ./data/PhoVSR/datas/info and run
-Calculate the WER/CER:
+If you want to run the full test set and get the evluation matrics, please download CMLR change the data at ./data/PhoVSR/datas/info and run
 ```
 python test.py mode=eval
 ```
-The defuault CER for 8 samples is XXXXX.
+It will calculate the WER/CER. The current defuault CER for current provided 8 samples is XXXXX.
 ## PhoVSR models
 
 
