@@ -4,7 +4,8 @@
 
 We have released our evaluating recipe for PhoVSR on LRS2, CMLR dataset.
 
-Our Training recipe is coming soon.
+Algorithm 1 is implemented in 'datas/utils', which is only used in data 
+preprocessing before training, and not in evaluation.
 
 ## Preparation
 1. Clone the repository:
