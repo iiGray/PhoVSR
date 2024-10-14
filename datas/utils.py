@@ -5,6 +5,8 @@
     This file mainly implements algorithm 1, which is used in English
     scenrios, and not needed in Chinese scenrios.
 
+    It is used for data preprocessing before training, and not needed during evaluation.
+
 """
 
 from num2words import num2words
