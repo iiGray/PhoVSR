@@ -4,7 +4,7 @@
 
 We have released our evaluating recipe for PhoVSR on LRS2, CMLR dataset.
 
-Algorithm 1 is implemented in "datas/utils", which is only used in data 
+The random alignment algorithm (Algorithm 1 in the paper) is implemented in "datas/utils", which is only used in data 
 preprocessing before training, and not in evaluation.
 
 ## Preparation
